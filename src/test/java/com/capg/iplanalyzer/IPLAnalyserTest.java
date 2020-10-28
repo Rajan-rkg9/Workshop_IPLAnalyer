@@ -63,4 +63,26 @@ public class IPLAnalyserTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void givenSortedOnMostSixesBatsmenList_ShouldReturnTopStrikeRateBatsman() {
+		try {
+			String sortedBatsmenJson = new IPLAnalyser().getSortedBatsmenListOnMostSixes(RIGHT_CENSUS_CSV);
+			CSVIPLRecords[] batsmenListCsv=new Gson().fromJson(sortedBatsmenJson, CSVIPLRecords[].class);
+			assertEquals("Andre Russell", batsmenListCsv[0].player);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void givenSortedOnMostFoursBatsmenList_ShouldReturnTopStrikeRateBatsman() {
+		try {
+			String sortedBatsmenJson = new IPLAnalyser().getSortedBatsmenListOnMostFours(RIGHT_CENSUS_CSV);
+			CSVIPLRecords[] batsmenListCsv=new Gson().fromJson(sortedBatsmenJson, CSVIPLRecords[].class);
+			assertEquals("Shikhar Dhawan", batsmenListCsv[0].player);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
