@@ -7,9 +7,9 @@ import org.junit.Test;
 import com.google.gson.Gson;
 
 public class IPLAnalyserTest {
-	public static final String RIGHT_CENSUS_CSV = "C:\\Users\\Rajan\\eclipse-workspace\\IPLAnalyzer\\src\\resources\\IPL2019FactsheetMostRuns.csv";
-	public static final String WRONG_CENSUS_CSV = "C:\\Users\\Rajan\\eclipse-workspace\\IPLAnalyzer\\src\\resources\\IPL2019factasheetMostRunsss.csv";
-	public static final String WRONGTYPE_CENSUS_CSV = "C:\\Users\\Rajan\\eclipse-workspace\\IPLAnalyzer\\src\\resources\\IPL2019factasheetMostRuns.pdf";
+	public static final String RIGHT_CENSUS_CSV = "C:\\Users\\Rajan\\eclipse-workspace\\IPLAnalyzer\\file\\resources\\IPL2019FactsheetMostRuns.csv";
+	public static final String WRONG_CENSUS_CSV = "C:\\Users\\Rajan\\eclipse-workspace\\IPLAnalyzer\\file\\resources\\IPL2019FactsheetMostRunssdd.csv";
+	public static final String WRONGTYPE_CENSUS_CSV = "C:\\Users\\Rajan\\eclipse-workspace\\IPLAnalyzer\\file\\resources\\IPL2019FactsheetMostRuns.pdf";
 	
 	@Test
 	public void givenBatsmenDataCsv_ShouldReturnExactCount() {
