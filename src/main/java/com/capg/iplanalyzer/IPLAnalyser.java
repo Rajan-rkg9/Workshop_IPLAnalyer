@@ -50,7 +50,7 @@ public class IPLAnalyser {
 		}
 	}
 	/**
-	 * UC2
+	 * UC2,UC4
 	 */
 	public String getSortedBatsmenListOnTopStrikingRates(String csvFilePath) throws IPLAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
