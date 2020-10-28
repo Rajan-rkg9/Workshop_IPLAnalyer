@@ -19,7 +19,7 @@ public class CSVIPLRecords {
 	@CsvBindByName(column = "HS")
 	public String highestScore;
 	@CsvBindByName(column = "Avg")
-	public String average;
+	public Double average;
 	@CsvBindByName(column = "BF")
 	public int ballFaced;
 	@CsvBindByName(column = "SR")
@@ -41,12 +41,4 @@ public class CSVIPLRecords {
 				+ halfCentury + ", fours=" + fours + ", sixes=" + sixes + "]";
 	}
 	
-	public String getAverage() {
-		try {
-			Double.parseDouble(average);
-			return average;
-		} catch (NumberFormatException e) {
-			return "0";
-		}
-	}
 }
