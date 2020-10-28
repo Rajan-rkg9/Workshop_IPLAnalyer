@@ -32,13 +32,16 @@ public class IPLAnalyser {
 		}
 	}
 	
-	public String getSortedBatsmenList(String csvFilePath) throws IPLAnalyserException {
+	/**
+	 * UC1
+	 */
+	public String getSortedBatsmenListOnBattingAverage(String csvFilePath) throws IPLAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
 			ICsvBuilder csvBuilder = CsvBuilderFactory.createBuilder();
 			List<CSVIPLRecords> batsmenList = csvBuilder.getListFromCsv(reader, CSVIPLRecords.class);
 			Function<CSVIPLRecords, Double> batsmanEntity=record->record.average;
 			Comparator<CSVIPLRecords> censusComparator=Comparator.comparing(batsmanEntity);
-			this.sortBasedOnBattingAverage(batsmenList, censusComparator);
+			this.sortBatsmenList(batsmenList, censusComparator);
 			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
 			return sortedStateCensusToJson;
 		} 
@@ -46,8 +49,24 @@ public class IPLAnalyser {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
 		}
 	}
-	
-	public void sortBasedOnBattingAverage(List<CSVIPLRecords> batsmenList, Comparator<CSVIPLRecords> censusComparator) {
+	/**
+	 * UC2
+	 */
+	public String getSortedBatsmenListOnTopStrikingRates(String csvFilePath) throws IPLAnalyserException {
+		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
+			ICsvBuilder csvBuilder = CsvBuilderFactory.createBuilder();
+			List<CSVIPLRecords> batsmenList = csvBuilder.getListFromCsv(reader, CSVIPLRecords.class);
+			Function<CSVIPLRecords, Double> batsmanEntity=record->record.strikeRate;
+			Comparator<CSVIPLRecords> censusComparator=Comparator.comparing(batsmanEntity);
+			this.sortBatsmenList(batsmenList, censusComparator);
+			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
+			return sortedStateCensusToJson;
+		} 
+		catch (IOException e) {
+			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
+		}
+	}
+	public void sortBatsmenList(List<CSVIPLRecords> batsmenList, Comparator<CSVIPLRecords> censusComparator) {
 		for(int i=0;i<batsmenList.size()-1;i++) 
 		{
 			for(int j=0; j<batsmenList.size()-i-1;j++)

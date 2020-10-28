@@ -43,11 +43,22 @@ public class IPLAnalyserTest {
 	}
 	
 	@Test
-	public void givenSortedBattingAverageBatsmenList_ShouldReturnBestAveragedBatsman() {
+	public void givenSortedOnBattingAverageBatsmenList_ShouldReturnBestAveragedBatsman() {
 		try {
-			String sortedBatsmenJson = new IPLAnalyser().getSortedBatsmenList(RIGHT_CENSUS_CSV);
+			String sortedBatsmenJson = new IPLAnalyser().getSortedBatsmenListOnBattingAverage(RIGHT_CENSUS_CSV);
 			CSVIPLRecords[] batsmenListCsv=new Gson().fromJson(sortedBatsmenJson, CSVIPLRecords[].class);
 			assertEquals("MS Dhoni", batsmenListCsv[0].player);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void givenSortedOnStrikingRatesBatsmenList_ShouldReturnTopStrikeRateBatsman() {
+		try {
+			String sortedBatsmenJson = new IPLAnalyser().getSortedBatsmenListOnTopStrikingRates(RIGHT_CENSUS_CSV);
+			CSVIPLRecords[] batsmenListCsv=new Gson().fromJson(sortedBatsmenJson, CSVIPLRecords[].class);
+			assertEquals("Ishant Sharma", batsmenListCsv[0].player);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
