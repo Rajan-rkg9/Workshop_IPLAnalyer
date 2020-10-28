@@ -33,7 +33,7 @@ public class IPLAnalyser {
 	}
 	
 	/**
-	 * UC1
+	 * UC1,UC5
 	 */
 	public String getSortedBatsmenListOnBattingAverage(String csvFilePath) throws IPLAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
