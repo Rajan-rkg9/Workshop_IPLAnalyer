@@ -134,9 +134,20 @@ public class IPLAnalyserTest {
 	@Test
 	public void givenSortedOnBowlingAverageBowlersList_ShouldReturnBestAveragedBowler() {
 		try {
-			String sortedBatsmenJson = new IPLAnalyser().getSortedBowlersListOnBowlingAverage(RIGHT_BOWLERS_CSV);
-			CSVIPLBatsmenRecords[] batsmenListCsv=new Gson().fromJson(sortedBatsmenJson, CSVIPLBatsmenRecords[].class);
-			assertEquals("Krishnappa Gowtham", batsmenListCsv[0].player);
+			String sortedBowlersJson = new IPLAnalyser().getSortedBowlersListOnBowlingAverage(RIGHT_BOWLERS_CSV);
+			CSVIPLBowlersRecords[] bowlersListCsv=new Gson().fromJson(sortedBowlersJson, CSVIPLBowlersRecords[].class);
+			assertEquals("Anukul Roy", bowlersListCsv[0].player);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void givenSortedOnBowlingStrikeRateBowlersList_ShouldReturnBestStrikingBowler() {
+		try {
+			String sortedBowlersJson = new IPLAnalyser().getSortedBowlersListOnBowlingStrikingRate(RIGHT_BOWLERS_CSV);
+			CSVIPLBowlersRecords[] bowlersListCsv=new Gson().fromJson(sortedBowlersJson, CSVIPLBowlersRecords[].class);
+			assertEquals("Alzarri Joseph", bowlersListCsv[0].player);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
