@@ -61,8 +61,8 @@ public class IPLAnalyser {
 			Function<CSVIPLBatsmenRecords, Double> batsmanEntity=record->record.average;
 			Comparator<CSVIPLBatsmenRecords> censusComparator=Comparator.comparing(batsmanEntity);
 			this.sortBatsmenList(batsmenList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(batsmenList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
@@ -78,8 +78,8 @@ public class IPLAnalyser {
 			Function<CSVIPLBatsmenRecords, Double> batsmanEntity=record->record.strikeRate;
 			Comparator<CSVIPLBatsmenRecords> censusComparator=Comparator.comparing(batsmanEntity);
 			this.sortBatsmenList(batsmenList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(batsmenList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
@@ -95,8 +95,8 @@ public class IPLAnalyser {
 			Function<CSVIPLBatsmenRecords, Integer> batsmanEntity=record->record.sixes;
 			Comparator<CSVIPLBatsmenRecords> censusComparator=Comparator.comparing(batsmanEntity);
 			this.sortBatsmenList(batsmenList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(batsmenList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
@@ -112,8 +112,8 @@ public class IPLAnalyser {
 			Function<CSVIPLBatsmenRecords, Integer> batsmanEntity=record->record.fours;
 			Comparator<CSVIPLBatsmenRecords> censusComparator=Comparator.comparing(batsmanEntity);
 			this.sortBatsmenList(batsmenList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(batsmenList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
@@ -129,8 +129,8 @@ public class IPLAnalyser {
 			Function<CSVIPLBatsmenRecords, Integer> batsmanEntity=record->record.runs;
 			Comparator<CSVIPLBatsmenRecords> censusComparator=Comparator.comparing(batsmanEntity);
 			this.sortBatsmenList(batsmenList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(batsmenList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(batsmenList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
@@ -146,8 +146,8 @@ public class IPLAnalyser {
 			Function<CSVIPLBowlersRecords, Double> bowlersEntity=record->record.average;
 			Comparator<CSVIPLBowlersRecords> censusComparator=Comparator.comparing(bowlersEntity);
 			this.sortBowlersList(bowlersList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(bowlersList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(bowlersList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
@@ -163,13 +163,14 @@ public class IPLAnalyser {
 			Function<CSVIPLBowlersRecords, Double> bowlersEntity=record->record.strikeRate;
 			Comparator<CSVIPLBowlersRecords> censusComparator=Comparator.comparing(bowlersEntity);
 			this.sortBowlersList(bowlersList, censusComparator);
-			String sortedPlayersListToJson=new Gson().toJson(bowlersList);
-			return sortedPlayersListToJson;
+			String sortedStateCensusToJson=new Gson().toJson(bowlersList);
+			return sortedStateCensusToJson;
 		} 
 		catch (IOException e) {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
 		}
 	}
+	
 	public void sortBatsmenList(List<CSVIPLBatsmenRecords> playersList, Comparator<CSVIPLBatsmenRecords> censusComparator) {
 		for(int i=0;i<playersList.size()-1;i++) 
 		{
