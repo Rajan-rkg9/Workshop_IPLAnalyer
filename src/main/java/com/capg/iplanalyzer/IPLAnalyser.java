@@ -170,7 +170,6 @@ public class IPLAnalyser {
 			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
 		}
 	}
-	
 	public void sortBatsmenList(List<CSVIPLBatsmenRecords> playersList, Comparator<CSVIPLBatsmenRecords> censusComparator) {
 		for(int i=0;i<playersList.size()-1;i++) 
 		{
