@@ -263,11 +263,20 @@ public class IPLAnalyser {
 	/**
 	 * UC13
 	 */
-	public List<IPLAllRounder>  getSortedAllroundersList(String batsmanFilePath, String bowlerFilePath) throws IPLAnalyserException {
+	public List<IPLAllRounder>  getSortedAllroundersListByBatting_BowlingAvg(String batsmanFilePath, String bowlerFilePath) throws IPLAnalyserException {
 		List<IPLAllRounder> iplAllRounderList = loadStats(batsmanFilePath, bowlerFilePath);
 				return iplAllRounderList.stream().
 						sorted(Comparator.comparing(IPLAllRounder::getPerformanceByAverage).reversed())
 						.collect(Collectors.toList());
+	}
+	/**
+	 * UC14
+	 */
+	public List<IPLAllRounder> getSoredtAllrounderListByWicketsAndRuns(String batsmanFilePath, String bowlerFilePath) throws IPLAnalyserException {
+		List<IPLAllRounder> iplAllRounderList = loadStats(batsmanFilePath, bowlerFilePath);
+		return iplAllRounderList.stream()
+				.sorted(Comparator.comparing(IPLAllRounder::getPerformanceByRunsAndWickets).reversed())
+				.collect(Collectors.toList());
 	}
 	public void sortBatsmenList(List<CSVIPLBatsmenRecords> playersList, Comparator<CSVIPLBatsmenRecords> censusComparator) {
 		for(int i=0;i<playersList.size()-1;i++) 

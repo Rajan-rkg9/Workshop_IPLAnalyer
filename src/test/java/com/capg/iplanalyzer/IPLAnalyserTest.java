@@ -200,10 +200,20 @@ public class IPLAnalyserTest {
 	}
 	
 	@Test
-	public void givenSortedOnBestAllrounders_ShouldReturnBestAllRounder() {
+	public void givenSortedBestAllroundersByBatting_BowlingAverage_ShouldReturnBestAllRounder() {
 		try {
-			List<IPLAllRounder> sortedAllrounderList=new IPLAnalyser().getSortedAllroundersList(RIGHT_BATSMEN_CSV , RIGHT_BOWLERS_CSV);
+			List<IPLAllRounder> sortedAllrounderList=new IPLAnalyser().getSortedAllroundersListByBatting_BowlingAvg(RIGHT_BATSMEN_CSV , RIGHT_BOWLERS_CSV);
 			assertEquals("Andre Russell",sortedAllrounderList.get(0).getPlayer());
+		    } catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void givenSortedBestAllroundersByWicketsAndRuns_ShouldReturnBestAllRounder() {
+		try {
+			List<IPLAllRounder> sortedAllrounderList=new IPLAnalyser().getSoredtAllrounderListByWicketsAndRuns(RIGHT_BATSMEN_CSV , RIGHT_BOWLERS_CSV);
+			assertEquals("Hardik Pandya",sortedAllrounderList.get(0).getPlayer());
 		    } catch (Exception e) {
 			e.printStackTrace();
 		}
