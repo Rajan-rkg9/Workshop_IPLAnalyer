@@ -163,4 +163,15 @@ public class IPLAnalyserTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void givenSortedOnBowlingEconomyBowlersList_ShouldReturnMostEconomicBowlerWith4wOr5w() {
+		try {
+			String sortedBowlersJson = new IPLAnalyser().getSortedBowlersListOnBowlingStrikingRateWith4wOr5w(RIGHT_BOWLERS_CSV);
+			CSVIPLBowlersRecords[] bowlersListCsv=new Gson().fromJson(sortedBowlersJson, CSVIPLBowlersRecords[].class);
+			assertEquals("Alzarri Joseph", bowlersListCsv[0].player);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
