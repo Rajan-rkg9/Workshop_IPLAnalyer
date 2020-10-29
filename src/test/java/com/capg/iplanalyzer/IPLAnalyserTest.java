@@ -2,6 +2,8 @@ package com.capg.iplanalyzer;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import com.google.gson.Gson;
@@ -193,6 +195,16 @@ public class IPLAnalyserTest {
 			CSVIPLBowlersRecords[] bowlersListCsv=new Gson().fromJson(sortedBowlersJson, CSVIPLBowlersRecords[].class);
 			assertEquals("Imran Tahir", bowlersListCsv[98].player);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void givenSortedOnBestAllrounders_ShouldReturnBestAllRounder() {
+		try {
+			List<IPLAllRounder> sortedAllrounderList=new IPLAnalyser().getSortedAllroundersList(RIGHT_BATSMEN_CSV , RIGHT_BOWLERS_CSV);
+			assertEquals("Andre Russell",sortedAllrounderList.get(0).getPlayer());
+		    } catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

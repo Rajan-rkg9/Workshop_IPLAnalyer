@@ -30,7 +30,8 @@ public class OpenCsvBuilder implements ICsvBuilder{
 		catch (RuntimeException e) {
 
 			throw new IPLAnalyserException("Wrong Delimiter or Header", IPLAnalyserExceptionType.SOME_OTHER_ERRORS);
-		}
-		
+		}	
 	}
+	
+	
 }
