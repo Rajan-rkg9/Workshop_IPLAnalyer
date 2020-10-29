@@ -182,7 +182,6 @@ public class IPLAnalyser {
 			Function<CSVIPLBowlersRecords, Double> bowlersEntity=record->record.economy;
 			Comparator<CSVIPLBowlersRecords> censusComparator=Comparator.comparing(bowlersEntity);
 			this.sortBowlersList(bowlersList, censusComparator);
-			
 			String sortedPlayersListToJson=new Gson().toJson(bowlersList);
 			return sortedPlayersListToJson;
 		} 
@@ -203,6 +202,23 @@ public class IPLAnalyser {
 			List<CSVIPLBowlersRecords> list = bowlersList.stream().filter
 					(bowler -> (bowler.fourWktHaul>0 ||  bowler.fiveWktHaul>0)).collect(Collectors.toList());
 			String sortedPlayersListToJson=new Gson().toJson(list);
+			return sortedPlayersListToJson;
+		} 
+		catch (IOException e) {
+			throw new IPLAnalyserException("Incorrect CSV File", IPLAnalyserExceptionType.CENSUS_FILE_PROBLEM);
+		}
+	}
+	/**
+	 * UC12
+	 */
+	public String getSortedBowlersListOnMostWickets(String csvFilePath) throws IPLAnalyserException {
+		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
+			ICsvBuilder csvBuilder = CsvBuilderFactory.createBuilder();
+			List<CSVIPLBowlersRecords> bowlersList = csvBuilder.getListFromCsv(reader, CSVIPLBowlersRecords.class);
+			Function<CSVIPLBowlersRecords, Integer> bowlersEntity=record->record.wickets;
+			Comparator<CSVIPLBowlersRecords> censusComparator=Comparator.comparing(bowlersEntity);
+			this.sortBowlersList(bowlersList, censusComparator);
+			String sortedPlayersListToJson=new Gson().toJson(bowlersList);
 			return sortedPlayersListToJson;
 		} 
 		catch (IOException e) {
