@@ -139,7 +139,7 @@ public class IPLAnalyser {
 		}
 	}
 	/**
-	 * UC7
+	 * UC7,UC11
 	 */
 	public String getSortedBowlersListOnBowlingAverage(String csvFilePath) throws IPLAnalyserException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
