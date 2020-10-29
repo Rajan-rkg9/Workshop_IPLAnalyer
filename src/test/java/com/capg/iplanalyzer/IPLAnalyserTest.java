@@ -218,4 +218,15 @@ public class IPLAnalyserTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void givenSortedPlayersByMax100AndAvg_ShouldReturnCorrectPlayer()  {
+		try {
+			List<CSVIPLBatsmenRecords> sortedListByAvgand100s = new IPLAnalyser().getBestAvgWithMax100s(RIGHT_BATSMEN_CSV);
+			assertEquals("David Warner ", sortedListByAvgand100s.get(0).player);
+		} catch (IPLAnalyserException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
